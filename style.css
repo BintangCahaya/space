@@ -1,0 +1,204 @@
+/* 🌙 DARK MODE (default) */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
+  transition: background 3s ease, color 3s ease;
+}
+
+/* 🌅 LIGHT MODE (sunrise) */
+body.light-mode {
+  background: linear-gradient(to top, #ffe29f, #ffa99f, #ffffff);
+  color: #222;
+}
+
+/* 🌟 Starfield */
+canvas#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  transition: opacity 2s ease;
+}
+
+/* 🌤️ Fade out stars in light mode */
+body.light-mode canvas#stars {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Layout */
+header, nav, main, footer {
+  text-align: center;
+  padding: 2em;
+}
+
+/* Navigation */
+nav a {
+  margin: 0 1em;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Gallery */
+.gallery img {
+  width: 30%;
+  margin: 1%;
+  border-radius: 10px;
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ☀️ SUN ELEMENT for sunrise effect */
+.sun {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at center, #FFD700, #FFA500);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0;
+  transition: bottom 4s ease-in, opacity 4s ease-in;
+}
+
+/* 🌞 Sun rises and appears in light mode */
+body.light-mode .sun {
+  bottom: 50px;
+  opacity: 1;
+}
+
+/* ☀️ SUN ELEMENT for sunrise effect - rising higher and blending */
+.sun {
+  position: fixed;
+  bottom: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle at center, #FFD700, #FFA500 60%, transparent 100%);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: bottom 6s ease-in-out, opacity 6s ease-in-out;
+  box-shadow: 0 0 60px 30px rgba(255, 215, 0, 0.5);
+}
+
+/* 🌞 Sun rises to the top and blends into the sky in light mode */
+body.light-mode .sun {
+  bottom: 80%;
+  opacity: 0.8;
+}
+
+/* 🎞️ Animated gallery images */
+.gallery img {
+  width: 30%;
+  margin: 1%;
+  border-radius: 10px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+/* 🕹️ Animated interaction buttons (header and nav) */
+.button-group button,
+nav a {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: inline-block;
+}
+
+.button-group button:hover,
+nav a:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* ☁️ Clouds container */
+.clouds {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+
+/* ☁️ Visible in light mode */
+body.light-mode .clouds {
+  opacity: 0.4;
+}
+
+/* ☁️ Cloud images */
+.cloud {
+  position: absolute;
+  background: url('images/cloud.png') no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 100px;
+  animation: moveClouds 60s linear infinite;
+  opacity: 0.8;
+}
+
+.cloud:nth-child(1) { top: 10%; left: -200px; animation-delay: 0s; }
+.cloud:nth-child(2) { top: 30%; left: -300px; animation-delay: 10s; }
+.cloud:nth-child(3) { top: 50%; left: -250px; animation-delay: 20s; }
+
+@keyframes moveClouds {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(120vw); }
+}
+
+/* 🌌 Parallax layer container */
+.parallax-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  will-change: transform;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.parallax-bg-1 {
+  background-image: url('images/parallax1.png');
+  opacity: 0.15;
+}
+
+.parallax-bg-2 {
+  background-image: url('images/parallax2.png');
+  opacity: 0.10;
+}
+
+#apod img {
+  margin-top: 1em;
+  max-height: 400px;
+  object-fit: contain;
+}

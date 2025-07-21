@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore the Universe</title>
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Leaflet CSS for ISS Tracker -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- Orbitron Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <!-- 🌌 Parallax Background Layers -->
+  <div class="parallax-layer parallax-bg-1"></div>
+  <div class="parallax-layer parallax-bg-2"></div>
+  <div class="parallax-layer parallax-bg-3"></div>
+  <div class="parallax-layer parallax-bg-4"></div>
+
+  <div class="sun"></div>
+
+  <!-- ☁️ Clouds and 🐦 Birds -->
+  <div class="clouds">
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+  </div>
+  <audio id="birdSound" src="sounds/birds-chirping.mp3" preload="auto" loop></audio>
+
+  <!-- Header -->
+  <header class="fade-in">
+    <h1>🌠 Explore the Universe</h1>
+    <p>Unlock the secrets of space</p>
+    <div class="button-group">
+      <button id="toggleMode" class="btn-sound">🌓 Toggle Theme</button>
+      <button id="toggleMusic" class="btn-sound">🎵 Music On/Off</button>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="fade-in">
+    <a href="#missions" class="btn-sound">Missions</a>
+    <a href="#facts" class="btn-sound">Facts</a>
+    <a href="#gallery" class="btn-sound">Gallery</a>
+    <a href="#getinvolved" class="btn-sound">Get Involved</a>
+  </nav>
+
+  <!-- Main Sections -->
+  <main>
+    <section id="missions" class="fade-in">
+      <h2>🚀 Famous Space Missions</h2>
+      <ul>
+        <li><strong>Apollo 11:</strong> First Moon landing in 1969.</li>
+        <li><strong>Voyager 1:</strong> Farthest human-made object.</li>
+        <li><strong>James Webb Telescope:</strong> Exploring ancient galaxies.</li>
+      </ul>
+    </section>
+
+    <section id="facts" class="fade-in">
+      <h2>🪐 Fun Space Facts</h2>
+      <ul>
+        <li>Neutron stars are so dense a spoonful weighs a billion tons.</li>
+        <li>There’s a giant water cloud floating in space.</li>
+        <li>Venus spins backward compared to most planets.</li>
+      </ul>
+    </section>
+
+    <section id="gallery" class="fade-in">
+      <h2>📷 Space Gallery</h2>
+      <div class="gallery">
+        <img src="images/space1.jpg" alt="Galaxy">
+        <img src="images/space2.jpg" alt="Astronaut">
+        <img src="images/space3.jpg" alt="Earth from Space">
+      </div>
+    </section>
+
+    <section id="getinvolved" class="fade-in">
+      <h2>🛰️ Get Involved</h2>
+      <p>Support space discovery by:</p>
+      <ul>
+        <li>Following missions from <a href="https://nasa.gov" target="_blank">NASA</a> or <a href="https://esa.int" target="_blank">ESA</a>.</li>
+        <li>Joining citizen projects like <a href="https://zooniverse.org" target="_blank">Zooniverse</a>.</li>
+        <li>Studying astronomy or space tech.</li>
+      </ul>
+    </section>
+
+    <!-- ISS Tracker -->
+    <section id="iss-tracker" class="fade-in">
+      <h2>🛰️ Live ISS Tracker</h2>
+      <div id="issMap" style="height: 400px; width: 100%; border-radius: 8px;"></div>
+    </section>
+
+    <!-- NASA APOD -->
+    <section id="apod" class="fade-in">
+      <h2>📷 NASA Picture of the Day</h2>
+      <div id="apodContent">
+        <p>Loading...</p>
+      </div>
+    </section>
+
+    <!-- Mars Weather -->
+    <section id="mars-weather" class="fade-in">
+      <h2>🌡️ Mars Weather</h2>
+      <div id="marsWeatherContent">
+        <p>Loading latest weather from Mars...</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fade-in">
+    &copy; 2025 Bintang Cahaya Wijaya. All rights reserved.
+  </footer>
+
+  <!-- Sounds -->
+  <audio id="clickSound" src="sounds/click.wav" preload="auto"></audio>
+  <audio id="bgMusic" src="sounds/bg-music.mp3" preload="auto" loop></audio>
+
+  <!-- ✅ Load Leaflet first -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- ✅ Then load your site’s script -->
+  <script src="script.js"></script>
+</body>
+</html>
